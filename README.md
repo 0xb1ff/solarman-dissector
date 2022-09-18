@@ -28,9 +28,11 @@ See https://www.wireshark.org/docs/wsug_html_chunked/ChPluginFolders.html
 
 ### Collect communication data
 The following is an example of a command that can be typed into a Linux computer to open an SSH connection to an OpenWRT router (192.168.1.1) and log data between the solar inverter (192.168.1.100) and the internet. The data will be written to *.pcap files. A new log file will automatically be created every 24 hours. As the solar inverter will only send data while the sun is shining, it is probably a good idea to use this command between sunset and sunrise to have the full data of one day written to each file.
-´´´
-ssh root@192.168.1.1 tcpdump -n -U -s0 -w - 'host 192.168.1.100 and not arp' | tcpdump -r - -w ./capture_%Y-%m-%d__%H_%M_%S.pcap  -G 86400 -C 1
-´´´
+
+```
+ssh root@192.168.1.1 tcpdump -n -U -s0 -w - 'host 192.168.1.100 and not arp' | 
+  tcpdump -r - -w ./capture_%Y-%m-%d__%H_%M_%S.pcap  -G 86400 -C 1
+```
 
 (Of course, there are many other possible ways of collecting this data. It is even possible to pipe the data directly to wireshark for real-time analysis.) 
 
