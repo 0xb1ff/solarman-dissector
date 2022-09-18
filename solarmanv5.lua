@@ -30,7 +30,7 @@ total_energy = ProtoField.uint32("solarmanv5.total_energy", "Total Energy", base
 grid_voltage = ProtoField.uint16("solarmanv5.grid_voltage", "Grid Voltage", base.DEC)
 grid_frequency = ProtoField.uint16("solarmanv5.grid_frequency", "Grid Frequency", base.DEC)
 power = ProtoField.uint16("solarmanv5.power", "Power", base.DEC)
-heatsink_temperature = ProtoField.uint16("solarmanv5.heatsink_temperature", "Heatsink Temperature", base.DEC)
+heatsink_temperature = ProtoField.int16("solarmanv5.heatsink_temperature", "Heatsink Temperature", base.DEC)
 vdc1 = ProtoField.uint16("solarmanv5.vdc1", "VDC1", base.DEC)
 idc1 = ProtoField.uint16("solarmanv5.idc1", "IDC1", base.DEC)
 vdc2 = ProtoField.uint16("solarmanv5.vdc2", "VDC2", base.DEC)
@@ -128,7 +128,7 @@ function solarmanv5_protocol.dissector(buffer, pinfo, tree)
     subtree:add_le (grid_frequency,    buffer( 68,  2)):append_text(" (" .. string.format("%.2f",tostring((buffer(68,2):le_uint())/100)) .. " Hz)")
     subtree:add_le (power,             buffer( 70,  2)):append_text(" (" .. tostring(buffer(70,2):le_uint()) .. " W)")
 
-    subtree:add_le (heatsink_temperature, buffer( 74,  2)):append_text(" (" .. string.format("%.2f",tostring((buffer( 74,  2):le_uint())/100)) .. "°C)")
+    subtree:add_le (heatsink_temperature, buffer( 74,  2)):append_text(" (" .. string.format("%.2f",tostring((buffer( 74,  2):le_int())/100)) .. "°C)")
 
     subtree:add_le (vdc1,              buffer( 96,  2)):append_text(" (" .. string.format("%.1f",tostring((buffer(96,2):le_uint())/10)) .. " V)")
     subtree:add_le (idc1,              buffer( 98,  2)):append_text(" (" .. string.format("%.1f",tostring((buffer(98,2):le_uint())/10)) .. " A)")
