@@ -39,6 +39,29 @@ ssh root@192.168.1.1 tcpdump -n -U -s0 -w - 'host 192.168.1.100 and not arp' |
 ### Open data in wireshark
 Open one of the *.pcap files in wireshark. Within the whole list of messages that were captured by the router, all messages that were exchanged with port 10000 of the cloud server should be marked with the protocol SOLARMANV5. When you look at the detailed info for these messages, the plugin should translate most data into a human readable format.
 
+## Message flow
+
+This section tries to document the message flow between the Bosswerk MI600 inverter and the solarman cloud server.
+The code of the dissector plugin is based on this analysis.
+
+### after power on and after each ~1.5 h interval:
+
+inverter ([Bosswerk MI600 hello msg](messages/decode_hello-msg.md)) (143 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter  
+inverter ([Bosswerk MI600 data msg](messages/decode_data.md) (547 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter  
+inverter ([hello end msg](messages/decode_hello_end-msg.md)) (73 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter  
+
+### 120 s interval:
+
+inverter ([heartbeat msg](messages/decode_heartbeat.md)) (14 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter
+
+### 5 min interval:
+
+inverter ([data msg](messages/decode_data.md)) (547 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter
+
+### other messages:
+
+have not been detected yet.
+
 ## References
 ### Node-red server/proxy for Sofar solar wifi stick
 See https://github.com/serek4/node-red-sofar-ktl-x
