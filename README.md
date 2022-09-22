@@ -65,4 +65,10 @@ have not been detected yet.
 ## References
 ### Node-red server/proxy for Sofar solar wifi stick
 See https://github.com/serek4/node-red-sofar-ktl-x
+
 This repository provides a node-red server/proxy for the solarman cloud protocol. It also documents the communication between the solarman cloud server and a different inverter than the Bosswerk MI600. (Note: The protocol is similar but slightly different. The dissector plugin would have to be changed to be fully useful with that inverter.) It would be interesting to adapt this server/proxy for usage with Bosswerk MI600 inverters.
+
+### OmnikMQTT
+See https://github.com/wouterbaake/OmnikMQTT
+
+This repository provides an alternative server for the solarman cloud protocol with translation the received data to MQTT. The code is written for Omnik inverters and would probably have to be changed to be used with the Bosswerk MI600.
