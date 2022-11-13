@@ -71,4 +71,4 @@ This repository provides a node-red server/proxy for the solarman cloud protocol
 ### OmnikMQTT
 See https://github.com/wouterbaake/OmnikMQTT
 
-This repository provides an alternative server for the solarman cloud protocol with translation the received data to MQTT. The code is written for Omnik inverters and would probably have to be changed to be used with the Bosswerk MI600.
+This repository provides an alternative server for the solarman cloud protocol with translation of the received data to MQTT. The code is written for Omnik inverters and would probably have to be changed to be used with the Bosswerk MI600.
