@@ -62,7 +62,7 @@ logger ([data msg](messages/decode_data.md)) (547 bytes) -> server ([srv-respons
 
 #### AT command ####
 
-server ([srv-at-command msg](messages/decode_srv-at-command.md) -> logger ([at-response msg](messages/decode_at-response.md) -> server 
+server ([srv-at-command msg](messages/decode_srv-at-command.md)) -> logger ([at-response msg](messages/decode_at-response.md)) -> server 
 
 ## References
 ### Node-red server/proxy for Sofar solar wifi stick
