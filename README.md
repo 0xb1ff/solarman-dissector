@@ -41,26 +41,28 @@ Open one of the *.pcap files in wireshark. Within the whole list of messages tha
 
 ## Message flow
 
-This section tries to document the message flow between the Bosswerk MI600 inverter and the solarman cloud server.
+This section tries to document the message flow between the logger inside the Bosswerk MI600 inverter and the solarman cloud server.
 The code of the dissector plugin is based on this analysis.
 
 ### after power on and after each ~1.5 h interval:
 
-inverter ([Bosswerk MI600 hello msg](messages/decode_hello-msg.md)) (143 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter  
-inverter ([Bosswerk MI600 data msg](messages/decode_data.md) (547 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter  
-inverter ([hello end msg](messages/decode_hello_end-msg.md)) (73 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter  
+logger ([Bosswerk MI600 hello msg](messages/decode_hello-msg.md)) (143 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> logger  
+logger ([Bosswerk MI600 data msg](messages/decode_data.md) (547 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> logger  
+logger ([hello end msg](messages/decode_hello_end-msg.md)) (73 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> logger  
 
 ### 120 s interval:
 
-inverter ([heartbeat msg](messages/decode_heartbeat.md)) (14 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter
+logger ([heartbeat msg](messages/decode_heartbeat.md)) (14 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> logger
 
 ### 5 min interval:
 
-inverter ([data msg](messages/decode_data.md)) (547 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> inverter
+logger ([data msg](messages/decode_data.md)) (547 bytes) -> server ([srv-response msg](messages/decode_srv-response.md)) (23 bytes) -> logger
 
 ### other messages:
 
-have not been detected yet.
+#### AT command ####
+
+server ([srv-at-command msg](messages/decode_srv-at-command.md) -> logger ([at-response msg](messages/decode_at-response.md) -> server 
 
 ## References
 ### Node-red server/proxy for Sofar solar wifi stick
