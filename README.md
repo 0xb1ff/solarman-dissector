@@ -42,7 +42,7 @@ Open one of the *.pcap files in wireshark. Within the whole list of messages tha
 ## Message flow
 
 This section tries to document the message flow between the logger inside the Bosswerk MI600 inverter and the solarman cloud server.
-The code of the dissector plugin is based on this analysis.
+The code of the dissector plugin is based on this analysis. At this time, the dissector plugin covers only a part of the results of the analysis. 
 
 ### after power on and after each ~1.5 h interval:
 
