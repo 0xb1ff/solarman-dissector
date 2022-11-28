@@ -24,10 +24,10 @@ message type 0x1110 (hello response), 0x1210 (data response), 0x1710 (keep alive
 | ---- 	| --- 	| -------- 	|                                                                                                           	|
 | 0x0B 	| 11  	| uInt8    	| frame type - 00: keep alive, 01: data logger (data rsp, hello end rsp), 02: solar inverter (hello rsp)      |
 | 0x0C 	| 12  	| uInt8   	| status - 0x01: OK                                                                              	            |
-| 0x0D 	| 13  	| uInt32LE 	| delivery time - Unix time                                                                                	  |
-| 0x0E 	| 14  	| "       	| "                                                                                                          	|
-| 0x0F 	| 15  	| "        	| "                                                                                                          	|
-| 0x10 	| 16  	| "        	| "                                                                                                         	|
+| 0x0D 	| 13  	| uInt32LE 	| unix time stamp                                                                                         	  |
+| 0x0E 	| 14  	| "       	| unix time stamp                                                                                         	  |
+| 0x0F 	| 15  	| "        	| unix time stamp                                                                                         	  |
+| 0x10 	| 16  	| "        	| unix time stamp                                                                                         	  |
 | 0x11 	| 17  	| uInt8 	  | heart rate, always 120 (seconds)                                                                          	|  
 | 0x12 	| 11  	| uInt8    	| always 00                                                                                                   |
 | 0x13 	| 11  	| uInt8    	| always 00                                                                                                   |
